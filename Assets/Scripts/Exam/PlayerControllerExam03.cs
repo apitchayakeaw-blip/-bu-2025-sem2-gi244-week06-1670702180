@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,7 +9,8 @@ public class PlayerControllerExam03 : MonoBehaviour
     public GameObject projectilePrefab;
 
     public bool enableAutoFireMode;
-    public float autoFireInterval = 0.1f;
+    public float autoFireInterval = 0.5f;
+    private float nextSpawnTime = 0;
 
     private float horizontalInput;
     private InputAction moveAction;
@@ -39,5 +41,26 @@ public class PlayerControllerExam03 : MonoBehaviour
         {
             Instantiate(projectilePrefab, transform.position, transform.rotation);
         }
+
+
+
+        float t = Time.time;
+
+        if (  t > nextSpawnTime) 
+        
+        {
+            if (enableAutoFireMode == true)
+        {
+            Instantiate(projectilePrefab, transform.position, transform.rotation);
+                nextSpawnTime = t + autoFireInterval;
+        }
+
+
+        }
+
+        /*if (enableAutoFireMode == true)
+        {
+            Instantiate(projectilePrefab, transform.position, transform.rotation);
+        }*/
     }
 }

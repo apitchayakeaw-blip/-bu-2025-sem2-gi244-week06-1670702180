@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
         horizontalInput = moveAction.ReadValue<Vector2>().x;
 
         // [4] move the player
-        transform.Translate(horizontalInput * speed * Time.deltaTime * Vector3.right);
+        transform.Translate(horizontalInput * speed * Time.deltaTime * Vector3.up);
 
         // [5] keep the player inbounds
         // if (transform.position.x < -10)
